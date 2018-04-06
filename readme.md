@@ -2,6 +2,8 @@
 
 **A headless terminal emulator, based on [xterm.js](https://github.com/xtermjs/xterm.js).**
 
+**Unfinished.** Waiting on [xtermjs/xterm.js#595](https://github.com/xtermjs/xterm.js/issues/595).
+
 [![npm version](https://img.shields.io/npm/v/another-headless-terminal.svg)](https://www.npmjs.com/package/another-headless-terminal)
 [![build status](https://api.travis-ci.org/derhuerst/another-headless-terminal.svg?branch=master)](https://travis-ci.org/derhuerst/another-headless-terminal)
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/another-headless-terminal.svg)
@@ -19,7 +21,13 @@ npm install another-headless-terminal
 ## Usage
 
 ```js
-todo
+const createTerminal = require('another-headless-terminal')
+
+const term = createTerminal()
+process.stdin.pipe(term)
+
+// later
+term.getScreen()
 ```
 
 

@@ -1,8 +1,29 @@
 'use strict'
 
-const test = require('tape')
+const fs = require('fs')
+const path = require('path')
+const {inspect} = require('util')
 
-const todo = require('.')
+const createTerminal = require('.')
 
-test('todo', (t) => {
-})
+const inputFile = 't0504-vim.in'
+const input = fs.readFileSync(path.join(__dirname, 'fixtures', inputFile))
+
+const terminal = createTerminal({height: 11})
+terminal.end(input)
+
+const expected = `\
+
+          v    1
+               2
+
+3^
+
+
+
+                                                                               v
+...
+   ooo^
+`
+
+assert.strictEqual(terminal.getScreen(), expected)
